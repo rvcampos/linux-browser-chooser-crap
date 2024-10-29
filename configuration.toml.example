@@ -1,0 +1,11 @@
+default = "personal"
+
+[[profile]]
+name = "personal"
+exec = "/usr/bin/thorium-browser"
+
+[[profile]]
+name = "work"
+exec = "/usr/bin/thorium-browser"
+args = ["--user-data-dir=my-data-dir"]
+domains = ["*.mydomain.com", "*.mydomain.dev", "localhost:3000"]

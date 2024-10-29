@@ -1,0 +1,12 @@
+[package]
+name = "simple-browser-chooser"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+toml = { version = "0.8" }
+serde = { version = "1", features = ["derive"] }
+url = { version = "2" }
+fqdn = { version = "0.4" }
+log = { version = "0.4" }
+pretty_env_logger = {version = "0.5.0"}
