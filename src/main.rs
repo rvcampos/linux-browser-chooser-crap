@@ -45,7 +45,16 @@ fn main() {
         arg_url = format!("https://{}", arg_url);
     }
 
-    let parsed_url = Url::parse(arg_url.as_str()).unwrap();
+    let mut parsed_url = Url::parse(arg_url.as_str()).unwrap();
+
+    if parsed_url.domain().is_some() && parsed_url.domain().unwrap() == "www.google.com" && parsed_url.path().ends_with("url") {
+        let qps: std::collections::HashMap<_, _>= parsed_url.query_pairs().into_owned().collect();
+        if qps.contains_key("url") {
+            let new_uri = qps.get("url").expect("url parameter is expected");
+            parsed_url = Url::parse(new_uri.as_str()).unwrap();
+        }
+    }
+
     let uri = parsed_url.to_string();
     let the_profile = config.get_profile_by_domain(parsed_url);
     let cmd = the_profile.exec;
