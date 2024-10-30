@@ -3,11 +3,11 @@ use toml::de::Error;
 
 use crate::config::{Config};
 use std::fs;
-use std::process::{exit, Stdio};
+use std::process::exit;
 use url::Url;
 use std::process::Command;
 use flexi_logger::{Duplicate, FileSpec, WriteMode};
-use log::{error, warn, debug, LevelFilter, info};
+use log::{error, warn, debug};
 
 fn main() {
     let home = std::env::var("HOME").unwrap();
